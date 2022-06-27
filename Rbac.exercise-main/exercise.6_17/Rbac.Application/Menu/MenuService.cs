@@ -16,6 +16,11 @@ namespace Rbac.Application
             MenuRepository = menuRepository;
         }
 
+
+        /// <summary>
+        /// 给菜单进行赋值
+        /// </summary>
+        /// <returns></returns>
         public List<MenuDto> GetMenuAll()
         {
             var list=MenuRepository.GetInfoAll();
@@ -34,6 +39,10 @@ namespace Rbac.Application
         }
 
 
+        /// <summary>
+        /// 调用递归给菜单子节点进行赋值
+        /// </summary>
+        /// <param name="menus"></param>
         private void GetNodes(List<MenuDto> menus)
         {
             var list = MenuRepository.GetInfoAll();
@@ -53,6 +62,10 @@ namespace Rbac.Application
             }
         }
 
+        /// <summary>
+        /// 获取菜单内容
+        /// </summary>
+        /// <returns></returns>
         public List<MenuListDto> GetList()
         {
             var list = MenuRepository.GetInfoAll();
@@ -69,6 +82,11 @@ namespace Rbac.Application
             return menudto;
         }
 
+
+        /// <summary>
+        /// 递归获取菜单内容
+        /// </summary>
+        /// <param name="menus"></param>
         private void GetNodesList(List<MenuListDto> menus)
         {
             var list = MenuRepository.GetInfoAll();
@@ -87,12 +105,24 @@ namespace Rbac.Application
             }
         }
 
+
+        /// <summary>
+        /// 菜单添加新建
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
         public bool Create(Menu menu)
         {
             menu.CreateTime = DateTime.Now;
             return MenuRepository.Add(menu);
         }
 
+
+        /// <summary>
+        /// 菜单修改
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
         public bool UpdMenu(Menu menu)
         {
             if (menu.ParentId == 0)

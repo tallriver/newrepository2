@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 
 namespace Rbac.Repository
 {
+    //泛型类--接口
     public interface IBaseRepository<T, TKey>
         where T : class
         where TKey : struct

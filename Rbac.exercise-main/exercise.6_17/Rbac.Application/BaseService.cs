@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rbac.Application
 {
+    //泛型类--具体实现
     public class BaseService<T, TDto> : IBaseService<T, TDto>
         where T : class, new()
         where TDto : class, new()

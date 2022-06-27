@@ -23,8 +23,10 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace Rbac.WebApi
 {
+    //启动头
     public class Startup
     {
+        //构造函数--获取配置文件
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -65,7 +67,7 @@ namespace Rbac.WebApi
 
                     RequireExpirationTime = true, //过期时间
 
-                    ClockSkew = TimeSpan.Zero   //平滑过期偏移时间
+                    ClockSkew = TimeSpan.Zero   //平滑过期偏移的时间
                 };
             }
 );
@@ -74,7 +76,7 @@ namespace Rbac.WebApi
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Rbac.WebApi", Version = "v1" });
 
-                //开启权限小锁
+                //suagger权限的小锁
                 options.OperationFilter<AddResponseHeadersFilter>();
                 options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
                 options.OperationFilter<SecurityRequirementsOperationFilter>();
@@ -89,12 +91,12 @@ namespace Rbac.WebApi
                 });
             });
 
-            //上下文
+            //数据迁移
             services.AddDbContext<MyDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("sqlserver")));
 
             
 
-            //跨域
+            //配置跨域
             services.AddCors(opt =>
             {
                 opt.AddDefaultPolicy(opt =>
@@ -103,6 +105,7 @@ namespace Rbac.WebApi
                 });
             });
 
+            //接口注册
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<IMenuService, MenuService>();
             services.AddScoped<IUserRepository, UserRepository>();

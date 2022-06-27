@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Rbac.Entity
 {
+
+    //上下文类
     public class MyDbContext: DbContext
     {
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
@@ -20,6 +22,8 @@ namespace Rbac.Entity
         public DbSet<MenuRole> MenuRole { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
 
+
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //给各个表添加约束
