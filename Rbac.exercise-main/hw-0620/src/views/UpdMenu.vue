@@ -58,11 +58,9 @@ export default {
         this.$refs["tree"].checkedValue[
           this.$refs["tree"].checkedValue.length - 1
         ];
-      if (this.form.parentId == undefined) {
-        this.form.parentId = this.form.menuId;
-      }
       debugger;
-      this.$axios.post("Menu/Upd", this.form).then((d) => {
+
+      this.$axios.post("Menu/UpdMenu", this.form).then((d) => {
         if (d.data) {
           this.$message.success("修改成功");
           this.$emit("updtable", true);

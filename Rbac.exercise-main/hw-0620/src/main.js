@@ -9,6 +9,7 @@ import axios from 'axios'
 const service = axios.create({
   baseURL: "https://localhost:44341/api/"
 })
+service.defaults.headers.common['Authorization'] = "bearer " + localStorage.getItem("token");
 Vue.prototype.$axios = service
 Vue.use(ElementUI);
 Vue.config.productionTip = false

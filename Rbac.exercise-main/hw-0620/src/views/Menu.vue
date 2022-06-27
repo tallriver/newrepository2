@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-button type="primary" @click="add">添加菜单</el-button>
+    <div style="float: left">
+      <el-button type="primary" @click="add">添加菜单</el-button>
+    </div>
     <el-table
       :data="tableData"
       style="width: 100%; margin-bottom: 20px"
@@ -53,6 +55,7 @@ export default {
         menuName: "",
         linkUrl: "",
       },
+      username: "",
     };
   },
   methods: {
@@ -71,7 +74,6 @@ export default {
     },
     //弹框修改菜单信息
     handleEdit(index, row) {
-      debugger;
       this.updmenutable = true;
       this.form = row;
       this.form.tableData = this.tableData;
